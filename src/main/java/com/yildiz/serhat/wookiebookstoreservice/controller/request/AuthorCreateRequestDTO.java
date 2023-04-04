@@ -1,6 +1,9 @@
 package com.yildiz.serhat.wookiebookstoreservice.controller.request;
 
-public record AuthorCreateRequestDTO(String firstName,
-                                     String lastName,
-                                     String pseudonym) {
+import jakarta.validation.constraints.NotNull;
+
+public record AuthorCreateRequestDTO(
+        @NotNull String firstName,
+        @NotNull String lastName,
+        @NotNull String pseudonym) {
 }

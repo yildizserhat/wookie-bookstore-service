@@ -1,14 +1,13 @@
 package com.yildiz.serhat.wookiebookstoreservice.service.impl;
 
 
-
 import com.yildiz.serhat.wookiebookstoreservice.configuration.JwtService;
 import com.yildiz.serhat.wookiebookstoreservice.controller.request.AuthenticationRequest;
 import com.yildiz.serhat.wookiebookstoreservice.controller.request.RegisterRequest;
 import com.yildiz.serhat.wookiebookstoreservice.controller.response.AuthenticationResponse;
 import com.yildiz.serhat.wookiebookstoreservice.domain.Role;
-import com.yildiz.serhat.wookiebookstoreservice.domain.entity.Token;
 import com.yildiz.serhat.wookiebookstoreservice.domain.TokenType;
+import com.yildiz.serhat.wookiebookstoreservice.domain.entity.Token;
 import com.yildiz.serhat.wookiebookstoreservice.domain.entity.User;
 import com.yildiz.serhat.wookiebookstoreservice.repository.TokenRepository;
 import com.yildiz.serhat.wookiebookstoreservice.repository.UserRepository;

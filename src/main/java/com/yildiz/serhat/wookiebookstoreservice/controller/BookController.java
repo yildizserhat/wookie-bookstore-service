@@ -75,6 +75,4 @@ public class BookController {
                                                  @RequestParam(value = "title", required = false) String title) {
         return new ResponseEntity<>(bookService.getBooksWithCriteria(title, description, author), HttpStatus.OK);
     }
-
-
 }

@@ -13,10 +13,9 @@ import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-import static java.util.Objects.*;
+import static java.util.Objects.nonNull;
 
 @Service
 @RequiredArgsConstructor
