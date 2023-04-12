@@ -24,14 +24,14 @@ import java.util.List;
 @RestController
 @RequestMapping("/v1/books")
 @RequiredArgsConstructor
-@Tag(name = "Book", description = "Endpoints about books")
+@Tag(name = "Book", description = "Endpoints about Books")
 public class BookController {
 
     private final BookService bookService;
 
     @PostMapping
     @Operation(summary = "Create/Publish Book")
-    public ResponseEntity<?> createBook(@RequestBody @Valid BookCreateRequestDTO request) {
+    public ResponseEntity<Void> createBook(@RequestBody @Valid BookCreateRequestDTO request) {
         bookService.createBook(request);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
@@ -50,7 +50,7 @@ public class BookController {
 
     @DeleteMapping("/{id}")
     @Operation(summary = "Delete Book By id")
-    public ResponseEntity<?> deleteBookById(@PathVariable("id") Long id) {
+    public ResponseEntity<Void> deleteBookById(@PathVariable("id") Long id) {
         bookService.deleteBookById(id);
         return ResponseEntity.ok().build();
     }

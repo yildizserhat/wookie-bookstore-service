@@ -82,7 +82,7 @@ public class BookServiceImpl implements BookService {
         Author author = null;
 
         if (nonNull(authorId)) {
-            author = authorService.getAuthorById(Long.valueOf(authorId));
+            author = authorService.getAuthorById(authorId);
         }
 
         Book book = Book.builder().title(title).description(description).author(author).build();

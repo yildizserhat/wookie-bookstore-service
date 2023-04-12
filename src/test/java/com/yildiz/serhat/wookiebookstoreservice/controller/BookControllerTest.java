@@ -66,7 +66,7 @@ class BookControllerTest {
     @Test
     @WithMockUser
     @SneakyThrows
-    public void shouldCreateNewBook() {
+    void shouldCreateNewBook() {
         String description = "In the summer of 1989, a group of bullied kids band together to destroy a shape-shifting monster, which disguises itself as a clown and preys on the children of Derry, their small Maine town.";
         String url = "https://m.media-amazon.com/images/M/MV5BYjg1YTRkNzQtODgyYi00MTQ5LThiMDYtNDJjMWRjNTdjZDZlXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_.jpg";
         BigDecimal price = BigDecimal.valueOf(19.90);
@@ -85,9 +85,9 @@ class BookControllerTest {
 
         List<Book> all = bookRepository.findAll();
 
-        assertEquals(all.size(), 1);
-        assertEquals(all.get(0).getAuthor().getFirstName(), "Stephen");
-        assertEquals(all.get(0).getAuthor().getLastName(), "King");
+        assertEquals(1, all.size());
+        assertEquals("Stephen", all.get(0).getAuthor().getFirstName());
+        assertEquals("King", all.get(0).getAuthor().getLastName());
         assertEquals(all.get(0).getTitle(), title);
         assertEquals(all.get(0).getDescription(), description);
         assertEquals(all.get(0).getPrice().setScale(2), price.setScale(2));
@@ -98,7 +98,7 @@ class BookControllerTest {
     @Test
     @WithMockUser
     @SneakyThrows
-    public void shouldNotCreateNewBookWithoutAuthor() {
+    void shouldNotCreateNewBookWithoutAuthor() {
         String description = "In the summer of 1989, a group of bullied kids band together to destroy a shape-shifting monster, which disguises itself as a clown and preys on the children of Derry, their small Maine town.";
         String url = "https://m.media-amazon.com/images/M/MV5BYjg1YTRkNzQtODgyYi00MTQ5LThiMDYtNDJjMWRjNTdjZDZlXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_.jpg";
         BigDecimal price = BigDecimal.valueOf(19.90);
@@ -121,7 +121,7 @@ class BookControllerTest {
     @Test
     @WithMockUser
     @SneakyThrows
-    public void shouldGetValidationErrorForPrice() {
+    void shouldGetValidationErrorForPrice() {
         String description = "In the summer of 1989, a group of bullied kids band together to destroy a shape-shifting monster, which disguises itself as a clown and preys on the children of Derry, their small Maine town.";
         String url = "https://m.media-amazon.com/images/M/MV5BYjg1YTRkNzQtODgyYi00MTQ5LThiMDYtNDJjMWRjNTdjZDZlXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_.jpg";
         BigDecimal price = BigDecimal.valueOf(-19.90);
@@ -141,7 +141,7 @@ class BookControllerTest {
     @Test
     @WithMockUser
     @SneakyThrows
-    public void shouldGetBookById() {
+    void shouldGetBookById() {
         String description = "In the summer of 1989, a group of bullied kids band together to destroy a shape-shifting monster, which disguises itself as a clown and preys on the children of Derry, their small Maine town.";
         String url = "https://m.media-amazon.com/images/M/MV5BYjg1YTRkNzQtODgyYi00MTQ5LThiMDYtNDJjMWRjNTdjZDZlXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_.jpg";
         BigDecimal price = BigDecimal.valueOf(19.90);
@@ -167,7 +167,7 @@ class BookControllerTest {
     @Test
     @WithMockUser
     @SneakyThrows
-    public void shouldDeleteBookById() {
+    void shouldDeleteBookById() {
         String description = "In the summer of 1989, a group of bullied kids band together to destroy a shape-shifting monster, which disguises itself as a clown and preys on the children of Derry, their small Maine town.";
         String url = "https://m.media-amazon.com/images/M/MV5BYjg1YTRkNzQtODgyYi00MTQ5LThiMDYtNDJjMWRjNTdjZDZlXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_.jpg";
         BigDecimal price = BigDecimal.valueOf(19.90);
@@ -187,13 +187,13 @@ class BookControllerTest {
 
         List<Book> all = bookRepository.findAll();
 
-        assertEquals(all.size(), 0);
+        assertEquals(0, all.size());
     }
 
     @Test
     @WithMockUser
     @SneakyThrows
-    public void shouldUnpublishBook() {
+    void shouldUnpublishBook() {
         String description = "In the summer of 1989, a group of bullied kids band together to destroy a shape-shifting monster, which disguises itself as a clown and preys on the children of Derry, their small Maine town.";
         String url = "https://m.media-amazon.com/images/M/MV5BYjg1YTRkNzQtODgyYi00MTQ5LThiMDYtNDJjMWRjNTdjZDZlXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_.jpg";
         BigDecimal price = BigDecimal.valueOf(19.90);
@@ -213,14 +213,14 @@ class BookControllerTest {
 
         List<Book> all = bookRepository.findAll();
 
-        assertEquals(all.size(), 1);
+        assertEquals(1, all.size());
         assertFalse(all.get(0).getActive());
     }
 
     @Test
     @WithMockUser
     @SneakyThrows
-    public void shouldUpdateBook() {
+    void shouldUpdateBook() {
         String description = "In the summer of 1989, a group of bullied kids band together to destroy a shape-shifting monster, which disguises itself as a clown and preys on the children of Derry, their small Maine town.";
         String url = "https://m.media-amazon.com/images/M/MV5BYjg1YTRkNzQtODgyYi00MTQ5LThiMDYtNDJjMWRjNTdjZDZlXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_.jpg";
         BigDecimal price = BigDecimal.valueOf(19.90);
@@ -245,14 +245,14 @@ class BookControllerTest {
 
         List<Book> all = bookRepository.findAll();
 
-        assertEquals(all.size(), 1);
-        assertEquals(all.get(0).getImageUrl(), "url");
+        assertEquals(1, all.size());
+        assertEquals("url", all.get(0).getImageUrl());
     }
 
     @Test
     @WithMockUser
     @SneakyThrows
-    public void shouldGetAllBooks() {
+    void shouldGetAllBooks() {
         String description = "In the summer of 1989, a group of bullied kids band together to destroy a shape-shifting monster, which disguises itself as a clown and preys on the children of Derry, their small Maine town.";
         String url = "https://m.media-amazon.com/images/M/MV5BYjg1YTRkNzQtODgyYi00MTQ5LThiMDYtNDJjMWRjNTdjZDZlXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_.jpg";
         BigDecimal price = BigDecimal.valueOf(19.90);
@@ -286,7 +286,7 @@ class BookControllerTest {
     @Test
     @WithMockUser
     @SneakyThrows
-    public void shouldGetBookWithCriteria() {
+    void shouldGetBookWithCriteria() {
         String description = "In the summer of 1989, a group of bullied kids band together to destroy a shape-shifting monster, which disguises itself as a clown and preys on the children of Derry, their small Maine town.";
         String url = "https://m.media-amazon.com/images/M/MV5BYjg1YTRkNzQtODgyYi00MTQ5LThiMDYtNDJjMWRjNTdjZDZlXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_.jpg";
         BigDecimal price = BigDecimal.valueOf(19.90);

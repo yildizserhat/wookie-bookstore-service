@@ -20,14 +20,14 @@ import java.util.List;
 @RestController
 @RequestMapping("/v1/authors")
 @RequiredArgsConstructor
-@Tag(name = "Author", description = "Endpoints about authors")
+@Tag(name = "Author", description = "Endpoints about Authors")
 public class AuthorController {
 
     private final AuthorService authorService;
 
     @PostMapping
     @Operation(summary = "Create Author")
-    public ResponseEntity<?> createAuthor(@RequestBody @Valid AuthorCreateRequestDTO request) {
+    public ResponseEntity<Void> createAuthor(@RequestBody @Valid AuthorCreateRequestDTO request) {
         authorService.createAuthor(request);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }

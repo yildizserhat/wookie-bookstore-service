@@ -30,7 +30,7 @@ class AuthorServiceImplTest {
 
 
     @Test
-    public void shouldCreateCar() {
+    void shouldCreateCar() {
         AuthorCreateRequestDTO createRequestDTO =
                 new AuthorCreateRequestDTO("Stephen", "King", "Richard Bachman");
 
@@ -41,7 +41,7 @@ class AuthorServiceImplTest {
     }
 
     @Test
-    public void shouldGetAuthorById() {
+    void shouldGetAuthorById() {
         when(repository.findById(1L)).thenReturn(Optional.of(Author.builder()
                 .id(1L)
                 .firstName("Stephen")
@@ -51,13 +51,13 @@ class AuthorServiceImplTest {
 
         Author authorById = authorService.getAuthorById(1L);
 
-        assertEquals(authorById.getFirstName(), "Stephen");
-        assertEquals(authorById.getLastName(), "King");
-        assertEquals(authorById.getPseudonym(), "Richard Bachman");
+        assertEquals("Stephen", authorById.getFirstName());
+        assertEquals("King", authorById.getLastName());
+        assertEquals("Richard Bachman", authorById.getPseudonym());
     }
 
     @Test
-    public void shouldThrowExceptionIfAuthorNotFound() {
+    void shouldThrowExceptionIfAuthorNotFound() {
         when(repository.findById(1L)).thenReturn(Optional.empty());
 
         assertThrows(AuthorNotFoundException.class,
@@ -65,7 +65,7 @@ class AuthorServiceImplTest {
     }
 
     @Test
-    public void shouldGetAllAuthors() {
+    void shouldGetAllAuthors() {
         when(repository.findAll()).thenReturn(List.of(Author.builder()
                 .id(1L)
                 .firstName("Stephen")
@@ -75,10 +75,10 @@ class AuthorServiceImplTest {
 
         List<Author> allAuthors = authorService.getAllAuthors();
 
-        assertEquals(allAuthors.size(), 1);
-        assertEquals(allAuthors.get(0).getFirstName(), "Stephen");
-        assertEquals(allAuthors.get(0).getLastName(), "King");
-        assertEquals(allAuthors.get(0).getPseudonym(), "Richard Bachman");
+        assertEquals(1, allAuthors.size());
+        assertEquals("Stephen", allAuthors.get(0).getFirstName());
+        assertEquals("King", allAuthors.get(0).getLastName());
+        assertEquals("Richard Bachman", allAuthors.get(0).getPseudonym());
     }
 
 }

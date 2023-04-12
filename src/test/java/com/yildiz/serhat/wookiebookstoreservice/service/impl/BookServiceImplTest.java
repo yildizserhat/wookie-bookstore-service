@@ -34,7 +34,7 @@ class BookServiceImplTest {
     private AuthorServiceImpl authorService;
 
     @Test
-    public void shouldCreateBook() {
+    void shouldCreateBook() {
         Author author = Author.builder()
                 .id(1L)
                 .firstName("Stephen")
@@ -63,7 +63,7 @@ class BookServiceImplTest {
     }
 
     @Test
-    public void shouldGetAllBooksByAuthor() {
+    void shouldGetAllBooksByAuthor() {
         Author author = Author.builder()
                 .id(1L)
                 .firstName("Stephen")
@@ -90,17 +90,17 @@ class BookServiceImplTest {
 
         List<Book> allBooksByAuthorId = bookService.getAllBooksByAuthorId(1L);
 
-        assertEquals(allBooksByAuthorId.size(), 1);
-        assertEquals(allBooksByAuthorId.get(0).getAuthor().getFirstName(), "Stephen");
-        assertEquals(allBooksByAuthorId.get(0).getAuthor().getLastName(), "King");
-        assertEquals(allBooksByAuthorId.get(0).getImageUrl(), url);
+        assertEquals(1, allBooksByAuthorId.size());
+        assertEquals("Stephen", allBooksByAuthorId.get(0).getAuthor().getFirstName());
+        assertEquals("King", allBooksByAuthorId.get(0).getAuthor().getLastName());
+        assertEquals(url, allBooksByAuthorId.get(0).getImageUrl());
         assertEquals(allBooksByAuthorId.get(0).getDescription(), description);
-        assertEquals(allBooksByAuthorId.get(0).getTitle(), title);
-        assertEquals(allBooksByAuthorId.get(0).getPrice(), price);
+        assertEquals(title, allBooksByAuthorId.get(0).getTitle());
+        assertEquals(price, allBooksByAuthorId.get(0).getPrice());
     }
 
     @Test
-    public void shouldGetBookById() {
+    void shouldGetBookById() {
         Author author = Author.builder()
                 .id(1L)
                 .firstName("Stephen")
@@ -126,16 +126,16 @@ class BookServiceImplTest {
 
         Book bookById = bookService.getBookById(1L);
 
-        assertEquals(bookById.getAuthor().getFirstName(), "Stephen");
-        assertEquals(bookById.getAuthor().getLastName(), "King");
-        assertEquals(bookById.getImageUrl(), url);
-        assertEquals(bookById.getDescription(), description);
-        assertEquals(bookById.getTitle(), title);
-        assertEquals(bookById.getPrice(), price);
+        assertEquals("Stephen", bookById.getAuthor().getFirstName());
+        assertEquals("King", bookById.getAuthor().getLastName());
+        assertEquals(url, bookById.getImageUrl());
+        assertEquals(description, bookById.getDescription());
+        assertEquals(title, bookById.getTitle());
+        assertEquals(price, bookById.getPrice());
     }
 
     @Test
-    public void shouldThrowExceptionWhenBookNotFound() {
+    void shouldThrowExceptionWhenBookNotFound() {
         when(repository.findById(1L)).thenReturn(Optional.empty());
 
         assertThrows(BookNotFoundException.class,
@@ -143,7 +143,7 @@ class BookServiceImplTest {
     }
 
     @Test
-    public void shouldUnpublishBook() {
+    void shouldUnpublishBook() {
         Author author = Author.builder()
                 .id(1L)
                 .firstName("Stephen")
@@ -182,7 +182,7 @@ class BookServiceImplTest {
     }
 
     @Test
-    public void shouldDeleteBookById() {
+    void shouldDeleteBookById() {
         Author author = Author.builder()
                 .id(1L)
                 .firstName("Stephen")
@@ -212,7 +212,7 @@ class BookServiceImplTest {
     }
 
     @Test
-    public void shouldUpdateBook() {
+    void shouldUpdateBook() {
         Author author = Author.builder()
                 .id(1L)
                 .firstName("Stephen")
@@ -248,6 +248,4 @@ class BookServiceImplTest {
         assertEquals(bookById.getPrice(), price);
         assertEquals(bookById.getDescription(), "description");
     }
-
-
 }

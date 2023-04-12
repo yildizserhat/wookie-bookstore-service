@@ -44,7 +44,7 @@ class AuthorControllerTest {
     @Test
     @WithMockUser
     @SneakyThrows
-    public void shouldCreateNewAuthor() {
+    void shouldCreateNewAuthor() {
         AuthorCreateRequestDTO createRequestDTO =
                 new AuthorCreateRequestDTO("Stephen", "King", "Richard Bachman");
 
@@ -56,16 +56,16 @@ class AuthorControllerTest {
 
         List<Author> all = repository.findAll();
 
-        assertEquals(all.size(), 1);
-        assertEquals(all.get(0).getFirstName(), "Stephen");
-        assertEquals(all.get(0).getLastName(), "King");
-        assertEquals(all.get(0).getPseudonym(), "Richard Bachman");
+        assertEquals(1, all.size());
+        assertEquals("Stephen", all.get(0).getFirstName());
+        assertEquals("King", all.get(0).getLastName());
+        assertEquals("Richard Bachman", all.get(0).getPseudonym());
     }
 
     @Test
     @WithMockUser
     @SneakyThrows
-    public void shouldGetAllAuthors() {
+    void shouldGetAllAuthors() {
         AuthorCreateRequestDTO createRequestDTO =
                 new AuthorCreateRequestDTO("Stephen", "King", "Richard Bachman");
 
